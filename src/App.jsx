@@ -12,6 +12,7 @@ import Inventario from './pages/Inventario';
 import Referidos from './pages/Referidos';
 import Ajustes from './pages/Ajustes';
 import Clima from './pages/Clima';
+import Prospectos from './pages/Prospectos';
 import { Tema } from './components/Tema';
 
 export const NAV_GRUPOS = { inicio: 'General', clientes: 'Operación', caja: 'Administración', ajustes: 'Sistema' };
@@ -25,6 +26,7 @@ export const NAV = [
   { id: 'caja', label: 'Caja', ico: '💰' },
   { id: 'inventario', label: 'Inventario', ico: '🧰' },
   { id: 'referidos', label: 'Referidos', ico: '🤝' },
+  { id: 'prospectos', label: 'Prospectos', ico: '🎯' },
   { id: 'ajustes', label: 'Ajustes', ico: '⚙️' },
 ];
 const MOVIL = ['inicio', 'clientes', 'piletas', 'visitas', 'caja'];
@@ -90,6 +92,7 @@ export default function App() {
     case 'referidos': vista = <Referidos />; break;
     case 'ajustes': vista = <Ajustes />; break;
     case 'clima': vista = <Clima />; break;
+    case 'prospectos': vista = <Prospectos />; break;
     default: vista = <Inicio />;
   }
   const activo = page === 'cliente' ? 'clientes' : page;

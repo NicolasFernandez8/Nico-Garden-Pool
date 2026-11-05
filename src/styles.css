@@ -485,3 +485,7 @@ body.con-modal { overflow: hidden; }
   .stats { grid-template-columns: 1fr; }
   .clima-dias { grid-template-columns: 1fr; }
 }
+
+.paginador { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.clic { cursor: pointer; }
+.clic:hover { color: var(--acento-txt); }

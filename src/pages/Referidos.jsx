@@ -40,7 +40,7 @@ export default function Referidos() {
   const [form, setForm] = useState(null);
   const [beneficio, setBeneficio] = useState('');
   useEffect(() => { getAjuste('beneficioReferido', '').then(setBeneficio); }, []);
-  const d = useLiveQuery(async () => ({ clientes: await db.clientes.toArray(), prospectos: await db.prospectos.toArray() }), []);
+  const d = useLiveQuery(async () => ({ clientes: await db.clientes.toArray(), prospectos: (await db.prospectos.toArray()).filter((p) => !p.fuente) }), []);
   if (!d) return null;
   const cMap = new Map(d.clientes.map((c) => [c.id, c]));
   const referidos = d.clientes.filter((c) => c.referidoPor);
