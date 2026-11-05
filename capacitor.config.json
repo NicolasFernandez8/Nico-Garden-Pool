@@ -1,0 +1,9 @@
+{
+  "appId": "com.nicogardenpool.app",
+  "appName": "Nico Garden & Pool",
+  "webDir": "dist",
+  "backgroundColor": "#150b11",
+  "plugins": {
+    "LocalNotifications": { "iconColor": "#f0559a" }
+  }
+}

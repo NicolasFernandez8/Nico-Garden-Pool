@@ -1,0 +1,37 @@
+{
+  "name": "nico-garden-pool",
+  "version": "1.0.0",
+  "description": "Nico Garden & Pool - gestión interna",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicolasFernandez8/nico-garden-pool.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NicolasFernandez8/nico-garden-pool/issues"
+  },
+  "homepage": "https://github.com/NicolasFernandez8/nico-garden-pool#readme",
+  "dependencies": {
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/local-notifications": "^6.1.0",
+    "chart.js": "^4.4.4",
+    "dexie": "^4.0.8",
+    "dexie-react-hooks": "^1.1.7",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@vitejs/plugin-react": "^4.3.3",
+    "vite": "^5.4.10",
+    "vite-plugin-pwa": "^0.20.5"
+  },
+  "private": true,
+  "type": "module"
+}

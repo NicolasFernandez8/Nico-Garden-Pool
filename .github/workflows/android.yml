@@ -1,0 +1,43 @@
+name: Generar APK Android
+on:
+  push:
+    branches: ['**']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - run: npm ci
+      - run: npm run build
+      - name: Crear proyecto Android
+        run: npx cap add android
+      - name: Íconos y splash
+        run: npx --yes @capacitor/assets@3.0.5 generate --android --iconBackgroundColor '#150b11' --iconBackgroundColorDark '#150b11' --splashBackgroundColor '#150b11' --splashBackgroundColorDark '#150b11' || echo "sin íconos personalizados"
+      - run: npx cap sync android
+      - name: Compilar APK
+        working-directory: android
+        run: ./gradlew assembleDebug --no-daemon
+      - run: cp android/app/build/outputs/apk/debug/app-debug.apk NicoGardenPool.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NicoGardenPool-apk
+          path: NicoGardenPool.apk
+      - name: Publicar en Releases
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: Nico Garden & Pool v1.0.${{ github.run_number }}
+          body: APK para instalar en Android (habilitá "instalar apps de origen desconocido").
+          files: NicoGardenPool.apk
